@@ -39,6 +39,12 @@ class Tester extends CI_Controller {
 
 	}
 
+    public function testsurat()
+    {
+        echo $this->daftarsurat_model->GetIdSuratToMahasiswa($this->session->userdata('nim'))->id_surat;
+        
+    }
+
 }
 
 /* End of file Tester.php */

@@ -42,30 +42,20 @@
                           ?>
                           <tr>
                            <td><?php echo $no++; ?></td>
-                            <td><?php echo $u->tanggal_diajukan; ?></td>
+                            <td><?php echo date('d-M-Y',strtotime($u->tanggal_diajukan))  ?></td>
                             <td><?php echo $u->nim; ?></td>
                             <td><?php echo $u->nama_mahasiswa; ?></td>
                             <td><?php echo $u->prodi; ?></td>
                             <td>
                               <div class="btn-group">
-                                <button type="button" class="btn btn-primary">Proses</button>
-                                <button type="button" class="btn btn-default">Detail</button>
-                                <a href="<?php echo site_url('admin/tolakemailkp') ?>" class="btn btn-danger">TOLAK</a>
+                                <a href="<?php echo site_url("surat/ubahProsesKP/$u->id_surat") ?>" class="btn btn-primary">Proses</a>
+                                <a href="<?php echo site_url("admin/tolakemailkp") ?>" class="btn btn-default">Detail</a>
+                                <a href="<?php echo site_url("admin/tolakemailkp") ?>" class="btn btn-danger">TOLAK</a>
                               </div>
                             </td>
                           </tr>
                         <?php } ?>
                         </tbody>
-                        <tfoot>
-                          <tr>
-                            <th>No</th>
-                            <th>Tanggal</th>
-                            <th>NIM</th>
-                            <th>Nama</th>
-                            <th>Program Studi</th>
-                            <th>Aksi</th>
-                          </tr>
-                        </tfoot>
                       </table>
 
 

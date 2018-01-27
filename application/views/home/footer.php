@@ -48,11 +48,30 @@
   $('.form-tambahan').hide();
   $('#anggota').change(function(){
 
+    
     $('.form-tambahan').hide();
     var total=$(this).val();
+
+    for (var x = total; x <= 5; x++) {
+      // $('.ft'+i).show();
+      $('#nim'+x).removeAttr('maxLength');
+      $('#nim'+x).removeAttr('minlength');
+      $('#nim'+x).removeAttr('required');
+      $('#nama'+x).removeAttr('required');
+    }
+    
+
     for (var i = 1; i <= total; i++) {
       $('.ft'+i).show();
+       $('#nim'+i).prop({
+          'required': true,
+          'maxLength':8,
+          'minLength':8,
+      });
+      $('#nama'+i).prop('required', true);
     }
+
+
   });
 </script>
 </body>

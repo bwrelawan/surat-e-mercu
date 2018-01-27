@@ -3,15 +3,16 @@
           <!-- Content Header (Page header) -->
           <section class="content-header">
             <h1>
-              Tabel Kerja Praktek
-              <medium class="label label-success">Finish</medium>
+              Tabel Tugas Akhir
+              <medium class="label label-warning">Process</medium>
             </h1>
             <ol class="breadcrumb">
               <li><a href="<?php echo base_url('admin') ?>"><i class="fa fa-home"></i> Dashboard</a></li>
-              <li><i class="fa fa-building-o"></i> Surat Kerja Praktek</li>
-              <li class="active"><i class="fa fa-table"></i> Tabel Surat Kerja Praktek</li>
+              <li><i class="fa fa-book"></i> Surat Tugas Akhir</li>
+              <li class="active"><i class="fa fa-table"></i> Tabel Tugas Akhir</li>
             </ol>
           </section>
+
           <!-- Main content -->
           <section class="content">
             <div class="row">
@@ -20,7 +21,7 @@
 
                 <div class="box">
                   <div class="box-header">
-                    <h3 class="box-title">Finish Table</h3>
+                    <h3 class="box-title">Process Table</h3>
                   </div>
                   <!-- /<div class="bo">/div>x-header -->
                   <div class="box-body table-responsive">
@@ -37,21 +38,21 @@
                         </tr>
                       </thead>
                       <tbody>
-                      <?php $no=1;
-                      foreach ($surat as $u) {
-                       ?>
+                         <?php $no =1;
+                          foreach ($surat as $u) {
+                          ?>
                         <tr>
                           <td><?php echo $no++; ?></td>
-                          <td><?php echo $u->tanggal_selesai;?></td>
+                          <td><?php echo date('d-M-Y',strtotime($u->tanggal_diajukan))?></td>
                           <td><?php echo $u->nim; ?></td>
                           <td><?php echo $u->nama_mahasiswa; ?></td>
                           <td><?php echo $u->email; ?></td>
                           <td><?php echo $u->prodi; ?></td>
                           <td>
-                            <a class="btn btn-primary col-sm-10 col-sm-offset-1 btn-finish" href="#"><span class="fa fa-check"></span>Take</a>
+                            <a class="btn btn-primary col-sm-5 col-sm-offset-1 btn-finish" href="#">Print <span class="glyphicon glyphicon-print"></span></a><a class="btn btn-success col-sm-5 col-sm-offset-1 btn-finish" href="#"><span class="fa fa-check"></span>Finish</a>
                           </td>
                         </tr>
-                      <?php } ?>  
+                     <?php } ?>   
                       </tbody>
                       </table>
                   </div>

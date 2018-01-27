@@ -1,15 +1,15 @@
-         <!-- Content Wrapper. Contains page content -->
+<!-- Content Wrapper. Contains page content -->
          <div class="content-wrapper">
           <!-- Content Header (Page header) -->
           <section class="content-header">
             <h1>
-              Tabel Kerja Praktek
-              <medium class="label label-success">Finish</medium>
+              Tabel Tugas Akhir
+              <medium class="label label-info">Take</medium>
             </h1>
             <ol class="breadcrumb">
               <li><a href="<?php echo base_url('admin') ?>"><i class="fa fa-home"></i> Dashboard</a></li>
-              <li><i class="fa fa-building-o"></i> Surat Kerja Praktek</li>
-              <li class="active"><i class="fa fa-table"></i> Tabel Surat Kerja Praktek</li>
+              <li><i class="fa fa-building-o"></i> Surat Tugas Akhir</li>
+              <li class="active"><i class="fa fa-table"></i> Tabel Surat Tugas Akhir</li>
             </ol>
           </section>
           <!-- Main content -->
@@ -20,7 +20,7 @@
 
                 <div class="box">
                   <div class="box-header">
-                    <h3 class="box-title">Finish Table</h3>
+                    <h3 class="box-title">Take Table</h3>
                   </div>
                   <!-- /<div class="bo">/div>x-header -->
                   <div class="box-body table-responsive">
@@ -33,25 +33,32 @@
                           <th>Nama</th>
                           <th>E-Mail</th>
                           <th>Program Studi</th>
-                          <th>Aksi</th>
+                          <th>Status</th>
                         </tr>
                       </thead>
                       <tbody>
-                      <?php $no=1;
-                      foreach ($surat as $u) {
-                       ?>
                         <tr>
-                          <td><?php echo $no++; ?></td>
-                          <td><?php echo $u->tanggal_selesai;?></td>
-                          <td><?php echo $u->nim; ?></td>
-                          <td><?php echo $u->nama_mahasiswa; ?></td>
-                          <td><?php echo $u->email; ?></td>
-                          <td><?php echo $u->prodi; ?></td>
+                          <td>1</td>
+                          <td><?php echo date('d/m/Y');?></td>
+                          <td>4151.......</td>
+                          <td>Mala</td>
+                          <td>Ngok@Crud.com</td>
+                          <td>Persilatan</td>
                           <td>
-                            <a class="btn btn-primary col-sm-10 col-sm-offset-1 btn-finish" href="#"><span class="fa fa-check"></span>Take</a>
+                            <h5 align="center"><strong>SELESAI</strong></h5>
                           </td>
                         </tr>
-                      <?php } ?>  
+                        <tr>
+                          <td>2</td>
+                          <td><?php echo date('d/m/Y');?></td>
+                          <td>4151......</td>
+                          <td>Joss</td>
+                          <td>Ngok@crud.com</td>
+                          <td>Pertanian</td>
+                          <td>
+                            <h5 align="center"><strong>SELESAI</strong></h5>
+                          </td>
+                        </tr>
                       </tbody>
                       </table>
                   </div>

@@ -34,7 +34,6 @@
                 <!-- /.col -->
               </div>
           </div>
-
           <?php echo form_close(); ?>
           <!-- /.login-box-body -->
         </div>

@@ -61,6 +61,23 @@ background-color: #e7e7e7 !important;
 	color: #ffffff;
 	padding: 20px;
 }
+.dash1{
+  background-color: blue;
+  border: 10px;
+  margin-left: 10%;
+  margin-bottom: 10%;
+  padding-bottom: 2%;
+}
+.dash2{
+  background-color: yellow;
+  border: 10px;
+  float: right;
+  margin-right: 10%;
+  padding-bottom: 2%;
+}
+.dash-btn{
+  margin-top: 25%;
+}
 
 
 
@@ -222,18 +239,31 @@ background-color: #e7e7e7 !important;
 .skin-blue .sidebar-menu .treeview-menu>li.waiting-active>a{
   color: #3c8dbc;
 }
+.skin-blue .sidebar-menu .treeview-menu>li.proses-active>a{
+  color: #f39c12;
+}
 .skin-blue .sidebar-menu .treeview-menu>li.finish-active>a{
   color: #00a65a;
 }
+.skin-blue .sidebar-menu .treeview-menu>li.take-active>a{
+  color: #00c0ef;
+}
+
 
 .skin-blue .sidebar-menu>li.waiting-active>a{
   color:#3c8dbc;
-
 }
-
+.skin-blue .sidebar-menu>li.proses-active>a{
+  color:#f39c12;
+  border-left-color: #f39c12;
+}
 .skin-blue .sidebar-menu>li.finish-active>a{
   color:#00a65a;
   border-left-color: #00a65a;
+}
+.skin-blue .sidebar-menu>li.take-active>a{
+  color:#00c0ef;
+  border-left-color: #00c0ef;
 }
 
 /*PRINT */
