@@ -11,6 +11,41 @@ body.body{
 
 	font-weight: bold;
 }
+.slideanim {visibility:hidden;}
+.slide {
+    /* The name of the animation */
+    animation-name: slide;
+    -webkit-animation-name: slide; 
+    /* The duration of the animation */
+    animation-duration: 1s; 
+    -webkit-animation-duration: 1s;
+    /* Make the element visible */
+    visibility: visible; 
+}
+
+/* Go from 0% to 100% opacity (see-through) and specify the percentage from when to slide in the element along the Y-axis */
+@keyframes slide {
+    0% {
+        opacity: 0;
+        transform: translateY(70%);
+    } 
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    } 
+}
+@-webkit-keyframes slide {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(70%);
+    } 
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0%);
+    }
+}
+
+
 .header-home{
 	 background: url('../../image/tufasilkomm60persen.jpg') no-repeat center center; 
   -webkit-background-size: cover;
@@ -71,9 +106,10 @@ background-color: #e7e7e7 !important;
 }
 h1.intro{
   font-weight: 700;
+  margin-bottom: 33px;
 }
 p.statement{
-  line-height:50px;
+  line-height:36px;
   font-size: 2.0rem;
 }
 .btn-header{

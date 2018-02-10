@@ -31,10 +31,6 @@ class Surat extends CI_Controller {
 
 		$namafile 		= $kirimemail->id_surat;
 		$emailmahasiswa	= $kirimemail->email;
-		$isi       = html_entity_decode("Halo ".$kirimemail->nama_mahasiswa." surat yang kamu ajukan telah selesai dibuat, untuk dapat mengambil surat yang kamu ajukan di TU FASILKOM kamu <b>diharuskan</b> untuk membawa tanda bukti yang bisa kamu unduh di lampiran yang bersamaan dengan pesan ini.
-		<br><br>
-		Salam,
-		TU FASILKOM");
 		//Load the library
 	    $this->load->library('html2pdf');
 	    
@@ -50,7 +46,7 @@ class Surat extends CI_Controller {
 	    	'no_surat'   => $kirimemail->no_surat
 	    );
 	    //Load html view
-	    $this->html2pdf->html($this->load->view('tiket/pdf2', $data, true));
+	    $this->html2pdf->html($this->load->view('tiket/pdf', $data, true));
 	    $subjek = "[E-SURAT] "." ".$kirimemail->nama_mahasiswa." ".$kirimemail->jenis_surat;
 	    //Check that the PDF was created before we send it
 	    if($path = $this->html2pdf->create('save')) {
@@ -60,7 +56,7 @@ class Surat extends CI_Controller {
             'smtp_host' => 'https://www.mohagustiar.info/',  
             'smtp_port' =>  465,  
             'smtp_user' => 'contactme@mohagustiar.info',   
-            'smtp_pass' => 'project2m123!@#',  
+            'smtp_pass' => 'gundu12345',  
             'smtp_keepalive'=>'TRUE',
             'mailtype' => 'html',   
             'charset' => 'iso-8859-1'  
@@ -71,8 +67,7 @@ class Surat extends CI_Controller {
 			$this->email->to($emailmahasiswa); 
 				
 			$this->email->subject($subjek);
-			$this->email->message($isi);
-			$this->email->set_mailtype("html");	
+			$this->email->message('Haloo Ini adalah tiket bukti pembayaran kamu');	
 			$this->email->attach($path);
 			$this->email->send();
 			
@@ -82,23 +77,23 @@ class Surat extends CI_Controller {
 		
 	}
 
+	
 
-	public function kirimpesantolakkp($idsurat)
+	public function kirimpesantolak()
 	{
-		$data = $this->tampilsurat_model->detailKP($idsurat);
-		$isi= html_entity_decode(
-			"Halo ".$data['nama_mahasiswa']." dengan datangnya pesan ini kami TU FASILKOM masih belum bisa memproses surat Kerja Praktek yang kamu ajukan karena terdapat kesalahan dalam proses pengisian data pada saat kamu mengisi formulir pengajuan surat, pastikan kamu mengisi alamat yang sesuai dengan kaidah penulisan alamat yang benar serta menuliskan nama jabatan yang sesuai dengan jabatan orang yang kamu tuju.
-			<br><br>
-			Salam,
-			TU FASILKOM"
-		) ;
+		
+        $kepada = $this->input->post('emaildikirim');
+		$subjek = $this->input->post('subjek');
+		$id_surat = $this->input->post('id_surat');
 
+		$isi    = $this->input->post('isipesantolak');
+		
 		$config = Array(  
 	        'protocol' => 'smtp',  
 	        'smtp_host' => 'https://www.mohagustiar.info/',  
 	        'smtp_port' =>  465,  
 	        'smtp_user' => 'contactme@mohagustiar.info',   
-	        'smtp_pass' => 'project2m123!@#',  
+	        'smtp_pass' => 'gundu12345',  
 	        'smtp_keepalive'=>'TRUE',
 	        'mailtype' => 'html',   
 	        'charset' => 'iso-8859-1'  
@@ -107,14 +102,14 @@ class Surat extends CI_Controller {
         $this->load->library('email', $config);  
         $this->email->set_newline("\r\n");  
 	    $this->email->from('contactme@mohagustiar.info','Raka Hikmah');
-		$this->email->to($data['email']); 
+		$this->email->to($kepada); 
 			
-		$this->email->subject("Pengajuan Surat Anda Ditolak");
+		$this->email->subject($subjek);
 		$this->email->message($isi);
 		$this->email->set_mailtype("html");
 		$this->email->send();
 
-		$this->statussurat_model->SuratKpToTolak($data['id_surat']);
+		$this->statussurat_model->SuratKpToTolak($id_surat);
 
 		$this->session->set_flashdata('infotolak','true');
 	    redirect('admin/waitingkp');
@@ -128,6 +123,15 @@ class Surat extends CI_Controller {
 
 		$this->session->set_flashdata('info','true');
 	    redirect('admin/finishkp');
+	}
+
+	public function hapusKP()
+	{
+		$start_date = $this->input->post('startdate');
+		$end_date = $this->input->post('finishdate');
+
+		$this->statussurat_model->HapusDataKP($start_date,$end_date);
+
 	}
 
 }
