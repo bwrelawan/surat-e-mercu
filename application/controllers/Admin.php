@@ -52,6 +52,7 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/tolakemailta_v');
 		$this->load->view('admin/footer');
 	}
+	
     public function tolakemailkp($id_surat){
     	$data['detailkp'] = $this->tampilsurat_model->get_email_user_kp($id_surat);
 
@@ -60,6 +61,7 @@ class Admin extends CI_Controller {
     	$this->load->view('admin/tolakemailkp_v',$data);
     	$this->load->view('admin/footer');
     }
+
 	public function waitingTA()
 	{
 		$this->load->view('admin/header');
@@ -68,6 +70,7 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/waitingta',$data);
 		$this->load->view('admin/footer');
 	}
+
 	public function proseskp()
 	{
 		$this->load->view('admin/header');
@@ -76,13 +79,16 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/proseskp',$data);
 		$this->load->view('admin/footer');
 	}
+
 	public function prosesTA()
 	{
 		$this->load->view('admin/header');
 		$this->load->view('admin/sidebar');
-		$this->load->view('admin/prosesta');
+		$data['surat'] = $this->tampilsurat_model->tampil_datata_proses();
+		$this->load->view('admin/prosesta',$data);
 		$this->load->view('admin/footer');
 	}
+
 	public function finishkp()
 	{
 		$this->load->view('admin/header');
@@ -91,6 +97,7 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/finishkp',$data);
 		$this->load->view('admin/footer');
 	}
+
 	public function finishTA()
 	{
 		$this->load->view('admin/header');
@@ -187,6 +194,7 @@ class Admin extends CI_Controller {
 		}
 
 	}
+
 	public function koordinatorsetting(){
 		$this->load->view('admin/header');
 		$this->load->view('admin/sidebar');
@@ -194,6 +202,7 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/koordinatorsetting',array('data'=>$data));
 		$this->load->view('admin/footer');
 	}
+
 	public function printKP($idsurat){
 		$data['surat'] 		= $this->tampilsurat_model->printKP($idsurat);
 		$data['mahasiswa']	= $this->tampilsurat_model->PrintMahasiswaKP($idsurat);
@@ -201,32 +210,122 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/printKP',$data);
 	}
 
-	
-
 	public function cetakLAP(){
 		$startdate = $this->input->post('startdate');
 		$enddate = $this->input->post('enddate');
+		$jurusan = $this->input->post('jurusan');
 
 		if ($startdate <= $enddate) {
-			$data= $this->tampilsurat_model->printLAPORAN($startdate,$enddate);
+			$data= $this->report_model->printLAPORAN($startdate,$enddate,$jurusan);
 			$this->load->view('admin/cetaklaporan',array('data'=>$data));
 		}else{
 			$this->session->set_flashdata('gagal_tanggal','true');
 			redirect('admin/takeTA');
 		}
-
-		
-	}
-	public function cetakLAPkp(){
-		$startdate = $this->input->post('startdate');
-		$finishdate = $this->input->post('finishdate');
-		$data= $this->tampilsurat_model->printLAPORANkp($startdate,$finishdate);
-		
-		
-		$this->load->view('admin/cetaklaporankp',array('data'=>$data));
 	}
 
+	public function HapusSuratKP()
+	{
+		$startdate = date('Y-m-d',strtotime($this->input->post('startdate')));
+		$finishdate = date('Y-m-d',strtotime($this->input->post('finishdate')));
+
+		if ($startdate <= $finishdate) {
+			$this->statussurat_model->HapusDataKP($startdate,$finishdate);
+			$this->session->set_flashdata('berhasil_hapus','true');
+			redirect('admin/report');
+		}else{
+			$this->session->set_flashdata('gagal_tanggal','true');
+			redirect('admin/report');
+		}
+	}
+
+
+	public function cetakLAPkp()
+	{
+		$startdate = date('Y-m-d',strtotime($this->input->post('startdate')));
+		$finishdate = date('Y-m-d',strtotime($this->input->post('finishdate')));
+		$jurusan = $this->input->post('jurusan');
+		
+		if ($startdate <= $finishdate) {
+			$data['data']= $this->report_model->printLAPORANkp($startdate,$finishdate,$jurusan);
+			$data['jurusan'] = $jurusan;
+			$data['dari'] = $startdate;
+			$data['sampai'] = $finishdate;
+
+			$this->load->view('admin/cetaklaporankp',$data);	
+		}else{
+			$this->session->set_flashdata('gagal_tanggal','true');
+			redirect('admin/report');
+			
+		}
+		
+	}
+
+	public function teknikinfo()
+	{
+		$data['mhsti']    = $this->user_model->MahasiswaTeknikInformatika();
+		$data['jmlmhsti'] = $this->user_model->JumlahMahasiswaTeknikInformatika();
+
+		$this->load->view('admin/header');
+		$this->load->view('admin/sidebar');
+		$this->load->view('admin/teknikinfo',$data);
+		$this->load->view('admin/footer');
+	}
+
+	public function sisteminfo()
+	{
+		$data['mhssi']    = $this->user_model->MahasiswaSistemInformasi();
+		$data['jmlmhssi'] = $this->user_model->JumlahMahasiswaSistemInformasi();
+
+		$this->load->view('admin/header');
+		$this->load->view('admin/sidebar');
+		$this->load->view('admin/sisteminfo',$data);
+		$this->load->view('admin/footer');
+	}
+
+	public function tambahakun()
+	{
+		if ($this->uri->segment(2) == 'tambahakun') {
+			if ($this->session->userdata('role')=='superadmin') {
+						//form validasi
+				$this->form_validation->set_rules('username','Username','trim|required|alpha_numeric');
+				$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]|alpha_numeric');
+				$this->form_validation->set_rules('repassword', 'Re-Password', 'trim|required|matches[password]');
+
+				if ($this->form_validation->run() == FALSE) {
+					$this->load->view('admin/header');
+					$this->load->view('admin/sidebar');
+					$this->load->view('admin/tambahakun');
+					$this->load->view('admin/footer');
+				} else {
+					$username = $this->input->post('username');
+					$resultcheckusernameadmin = $this->daftar_model->cekusernameadmin($username);
+
+					if($resultcheckusernameadmin > 0){
+						$this->session->set_flashdata('usernamesudahada', 'true');
+						redirect('admin/tambahakun');
+					}else{
+						$this->daftar_model->registerAdmin($data);
+						$this->session->set_flashdata('info_berhasil', 'true');
+						redirect('admin/tambahakun');
+					}
+				}
+			}else{
+				redirect('admin');
+			}
+		}
+	}
+
+
+	public function report()
+	{
+		$this->load->view('admin/header');
+		$this->load->view('admin/sidebar');
+		$this->load->view('admin/report');
+		$this->load->view('admin/footer');
+	}
 }
 
 
 
+	
