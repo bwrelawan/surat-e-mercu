@@ -34,11 +34,9 @@ class Daftarsurat_model extends CI_Model {
 		return $query->row();
 	}
 
-	
-
-	public function daftarsuratTA()
+	public function daftarsuratTA($table,$data)
 	{
-		
+		return $this->db->insert($table,$data);
 	}
 
 	public function daftarsuratkp($data,$table)

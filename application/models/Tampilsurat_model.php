@@ -1,5 +1,6 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
+
 class Tampilsurat_model extends CI_Model
 {
 		# Query menampilkan Data KP Status = 'Waiting'
@@ -53,7 +54,7 @@ class Tampilsurat_model extends CI_Model
 
 		# Query menampilkan Data TA Status = 'Waiting'
 		public function tampil_datata_waiting(){
-			$sql = "SELECT a.tanggal_diajukan, a.nim,b.nama_mahasiswa,a.prodi FROM surat a, user b WHERE a.nim = b.nim AND a.status ='Menunggu' AND a.jenis_surat ='Tugas Akhir' ORDER BY id_surat DESC";
+			$sql = "SELECT a.id_surat,a.tanggal_diajukan, a.nim,b.nama_mahasiswa,a.prodi FROM surat a, user b WHERE a.nim = b.nim AND a.status ='Menunggu' AND a.jenis_surat ='Tugas Akhir' ORDER BY id_surat DESC";
 			$query = $this->db->query($sql);
 
 			return $query->result(); 
@@ -80,7 +81,7 @@ class Tampilsurat_model extends CI_Model
 
 		# Query menampilkan Data TA Status = 'Proses'
 		public function tampil_datata_proses(){
-			$sql = "SELECT a.tanggal_diajukan, a.nim,b.nama_mahasiswa,a.prodi FROM surat a, user b WHERE a.nim = b.nim AND a.status ='Proses' AND a.jenis_surat ='Tugas Akhir' ORDER BY id_surat DESC";
+			$sql = "SELECT a.id_surat,a.tanggal_diajukan, a.nim,b.nama_mahasiswa,a.prodi,b.email,a.no_surat FROM surat a, user b WHERE a.nim = b.nim AND a.status ='Proses' AND a.jenis_surat ='Tugas Akhir' ORDER BY id_surat DESC";
 			$query = $this->db->query($sql);
 
 			return $query->result(); 
@@ -125,7 +126,6 @@ class Tampilsurat_model extends CI_Model
 			$this->db->from('surat');
 			$this->db->join('user','user.nim =surat.nim');
 			$this->db->join('dosen','dosen.nik =surat.nik');
-			$this->db->where('surat.status =','Menunggu');
 			$this->db->where('id_surat',$id_surat);
 			$query = $this->db->get();
 			
@@ -147,40 +147,23 @@ class Tampilsurat_model extends CI_Model
 		public function PrintMahasiswaKP($id_surat)
 		{
 			
-			$query = $this->db->query("SELECT m.nim,m.nama_mahasiswa FROM mahasiswa m JOIN surat s 
+			$query = $this->db->query("SELECT m.nim,m.nama_mahasiswa,m.nohp FROM mahasiswa m JOIN surat s 
 								ON m.id_surat=s.id_surat WHERE 
 								m.id_surat='$id_surat' "
 							);
 
 			return $query->result_array();
 		}
-		public function printLAPORAN($startdate,$enddate)
+		public function detailTA($id_surat)
 		{
-			//$query = $this->db->query("select *FROM surat WHERE surat.tanggal_diambil BETWEEN ".$startdate." AND ".$enddate.";");
 			$this->db->select('*');
 			$this->db->from('surat');
-			$this->db->where('tanggal_diambil >=', date('Y-m-d',strtotime($startdate)));
-			$this->db->where('tanggal_diambil <=', date('Y-m-d',strtotime($enddate)));
-			//$this->db->where('jenis_surat = ','Tugas Akhir');
-			//$this->db->where('status =','Ambil');
+			$this->db->join('user','user.nim =surat.nim');
+			$this->db->join('dosen','dosen.nik =surat.nik');
+			$this->db->where('id_surat',$id_surat);
 			$query = $this->db->get();
-			return $query->result_array();
-		
+			
+			return $query->row_array();
 		}
-		public function printLAPORANkp($startdate,$finishdate)
-		{
-			//$query = $this->db->query("select *FROM surat WHERE surat.tanggal_diambil BETWEEN ".$startdate." AND ".$enddate.";");
-			$this->db->select('*');
-			$this->db->from('surat');
-			$this->db->where('tanggal_diambil >=', date('Y-m-d',strtotime($startdate)));
-			$this->db->where('tanggal_diambil <=', date('Y-m-d',strtotime($finishdate)));
-			$this->db->where('jenis_surat','Kerja Pratek');
-			$this->db->where('status =','Ambil');
-			$query = $this->db->get();
-			return $query->result_array();
-		
-		}
-		
-
 
 }
