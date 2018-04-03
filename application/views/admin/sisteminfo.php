@@ -39,11 +39,11 @@
                        ?> 
                         <tr>
 
-                            <td><?php echo $no++; ?></td>
-                            <td><?php echo $u->nim; ?></td>
-                            <td><?php echo $u->nama_mahasiswa; ?></td>
-                            <td><?php echo $u->prodi; ?></td>
-                            <td><?php echo $u->email; ?></td>
+                            <td><?php cetak($no++); ?></td>
+                            <td><?php cetak($u->nim); ?></td>
+                            <td><?php cetak($u->nama_mahasiswa); ?></td>
+                            <td><?php cetak($u->prodi); ?></td>
+                            <td><?php cetak($u->email); ?></td>
 
                         </tr>
                         <?php } ?>  

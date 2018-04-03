@@ -93,6 +93,7 @@ class Tester extends CI_Controller {
     $this->load->library('webservice');
 
     echo $this->webservice->CheckMatkulKP('41814010066','raka hikmah ramadhan');
+    echo $this->webservice->CheckMatkulKeseluruhan('41814010066','raka hikmah ramadhan');
     // echo $this->webservice->CheckSKSKp('41814010204');
     // echo $this->webservice->CheckSKSKp('41814010066');
   }

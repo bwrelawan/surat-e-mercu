@@ -12,13 +12,13 @@
               </div>
 
               <div class="col-xs-4">
-                <h4>Menunggu : <?=$kpwaiting?> </h4>
+                <h4>Menunggu : <?php echo $kpwaiting?> </h4>
               </div>
               <div class="col-xs-1 col-xs-offset-2">
                 <h4 class="proses-chart">&#9632</h4>
               </div>
               <div class="col-xs-4">
-                <h4>Proses : <?=$kpproses?> </h4>
+                <h4>Proses : <?php echo $kpproses?> </h4>
               </div>
             </div>
             
@@ -27,13 +27,13 @@
                 <h4 class="selesai-chart">&#9632</h4>
               </div>
               <div class="col-xs-4">
-                <h4>Selesai : <?=$kpfinish?> </h4>
+                <h4>Selesai : <?php echo $kpfinish?> </h4>
               </div>
              <div class="col-xs-1 col-xs-offset-2">
                <h4 class="ambil-chart">&#9632</h4>
              </div>
              <div class="col-xs-4">
-               <h4>Terima : <?=$kptake?> </h4>
+               <h4>Terima : <?php echo $kptake?> </h4>
              </div>
 
             </div>
@@ -44,7 +44,7 @@
               </div>
 
               <div class="col-xs-5">
-                <h4>Ditolak : <?=$kptolak?> </h4>
+                <h4>Ditolak : <?php echo $kptolak?> </h4>
 
               </div>
             </div>
@@ -79,11 +79,11 @@
                       <?php $no=1; ?>
                       <?php foreach ($suratwaiting as $surat): ?>
                         <tr>
-                          <td><?=$no++?></td>
-                          <td><?=$surat['nim']?></td>
-                          <td><?=$surat['nama_mahasiswa']?></td>
-                          <td><?=$surat['email']?></td>
-                          <td><?=$surat['prodi']?></td>
+                          <td><?php cetak($no++)?></td>
+                          <td><?php cetak($surat['nim'])?></td>
+                          <td><?php cetak($surat['nama_mahasiswa'])?></td>
+                          <td><?php cetak($surat['email'])?></td>
+                          <td><?php cetak($surat['prodi'])?></td>
                         </tr>
                       <?php endforeach ?>
                     </tbody>
@@ -108,11 +108,11 @@
                       <?php $no=1; ?>
                       <?php foreach ($suratproses as $surat): ?>
                         <tr>
-                          <td><?=$no++?></td>
-                          <td><?=$surat['nim']?></td>
-                          <td><?=$surat['nama_mahasiswa']?></td>
-                          <td><?=$surat['email']?></td>
-                          <td><?=$surat['prodi']?></td>
+                          <td><?php cetak($no++)?></td>
+                          <td><?php cetak($surat['nim'])?></td>
+                          <td><?php cetak($surat['nama_mahasiswa'])?></td>
+                          <td><?php cetak($surat['email'])?></td>
+                          <td><?php cetak($surat['prodi'])?></td>
                         </tr>
                       <?php endforeach ?>
                     </tbody>
@@ -137,11 +137,11 @@
                      <?php $no=1; ?>
                       <?php foreach ($suratfinish as $surat): ?>
                         <tr>
-                          <td><?=$no++?></td>
-                          <td><?=$surat['nim']?></td>
-                          <td><?=$surat['nama_mahasiswa']?></td>
-                          <td><?=$surat['email']?></td>
-                          <td><?=$surat['prodi']?></td>
+                          <td><?php cetak($no++)?></td>
+                          <td><?php cetak($surat['nim'])?></td>
+                          <td><?php cetak($surat['nama_mahasiswa'])?></td>
+                          <td><?php cetak($surat['email'])?></td>
+                          <td><?php cetak($surat['prodi'])?></td>
                         </tr>
                       <?php endforeach ?>
                     </tbody>
@@ -165,11 +165,11 @@
                      <?php $no=1; ?>
                       <?php foreach ($surattake as $surat): ?>
                         <tr>
-                          <td><?=$no++?></td>
-                          <td><?=$surat['nim']?></td>
-                          <td><?=$surat['nama_mahasiswa']?></td>
-                          <td><?=$surat['email']?></td>
-                          <td><?=$surat['prodi']?></td>
+                          <td><?php cetak($no++)?></td>
+                          <td><?php cetak($surat['nim'])?></td>
+                          <td><?php cetak($surat['nama_mahasiswa'])?></td>
+                          <td><?php cetak($surat['email'])?></td>
+                          <td><?php cetak($surat['prodi'])?></td>
                         </tr>
                       <?php endforeach ?>
                     </tbody>
@@ -193,11 +193,11 @@
                       <?php $no=1; ?>
                       <?php foreach ($surattolak as $surat): ?>
                         <tr>
-                          <td><?=$no++?></td>
-                          <td><?=$surat['nim']?></td>
-                          <td><?=$surat['nama_mahasiswa']?></td>
-                          <td><?=$surat['email']?></td>
-                          <td><?=$surat['prodi']?></td>
+                          <td><?php cetak($no++)?></td>
+                          <td><?php cetak($surat['nim'])?></td>
+                          <td><?php cetak($surat['nama_mahasiswa'])?></td>
+                          <td><?php cetak($surat['email'])?></td>
+                          <td><?php cetak($surat['prodi'])?></td>
                         </tr>
                       <?php endforeach ?>
                     </tbody>

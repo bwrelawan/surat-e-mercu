@@ -59,19 +59,19 @@
                           ?>
 								<tr>
 									<td>
-										<?php echo $no++; ?>
+										<?php cetak($no++); ?>
 									</td>
 									<td>
-										<?php echo date('d-M-Y',strtotime($u->tanggal_diajukan))  ?>
+										<?php cetak(date('d-M-Y',strtotime($u->tanggal_diajukan)))  ?>
 									</td>
 									<td>
-										<?php echo $u->nim; ?>
+										<?php cetak($u->nim); ?>
 									</td>
 									<td>
-										<?php echo $u->nama_mahasiswa; ?>
+										<?php cetak($u->nama_mahasiswa); ?>
 									</td>
 									<td>
-										<?php echo $u->prodi; ?>
+										<?php cetak($u->prodi); ?>
 									</td>
 									<td class="text-center">
 

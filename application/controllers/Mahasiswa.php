@@ -58,7 +58,7 @@ class Mahasiswa extends CI_Controller {
 	}
 
 	
-	public function daftarsuratkp()
+	public function daftarsuratkp($nim)
 	{
 	 $row 	   = $this->input->post('anggota');
 	
@@ -69,13 +69,9 @@ class Mahasiswa extends CI_Controller {
 		$fnim 		  = $this->input->post("fnim$y");
   		$nim  		  = $this->input->post("nim$y");
   		$nimmahasiswa = $fnim.$nim;
-
   		$hasil = $this->daftarsurat_model->validasimahasiswa($nimmahasiswa);	
   		$jumlahmahasiswa = $hasil+$jumlahmahasiswa;
 	 }
-
-	   
-
 	 
 
 	  if ($jumlahmahasiswa > 0 ) {

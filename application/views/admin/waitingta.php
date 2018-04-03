@@ -36,11 +36,11 @@
                         foreach ($surat as $u) {
                         ?>
                         <tr>
-                          <td><?php echo $no++; ?></td>
-                            <td><?php echo $u->tanggal_diajukan; ?></td>
-                            <td><?php echo $u->nim; ?></td>
-                            <td><?php echo $u->nama_mahasiswa; ?></td>
-                            <td><?php echo $u->prodi; ?></td>
+                          <td><?php cetak($no++); ?></td>
+                            <td><?php cetak($u->tanggal_diajukan); ?></td>
+                            <td><?php cetak($u->nim); ?></td>
+                            <td><?php cetak($u->nama_mahasiswa); ?></td>
+                            <td><?php cetak($u->prodi); ?></td>
                           <td class="col-md-3">
                               <button type="button" class="btn btn-primary">Proses</button>
                               <button type="button" class="btn btn-default">Detail</button>

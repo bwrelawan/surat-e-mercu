@@ -28,25 +28,25 @@
 
 			<div class="form-group inline ">
 				<!-- Nama Perusahaan -->
-				<label class="col-md-3 " for="namaperusahaan ">Nama Perusahaan yang dituju</label>
+				<label class="col-md-3 " for="namaperusahaan">Nama Perusahaan yang dituju</label>
 				<div class="col-md-6 ">
-					<input type="text " name="namaperusahaan " class="form-control " required placeholder="Nama Perusahaan ">
+					<input type="text " name="namaperusahaan" class="form-control " required placeholder="Nama Perusahaan ">
 				</div>
 			</div>
 
 			<div class="form-group inline ">
 				<!-- Orang yang dituju -->
-				<label class="col-md-3 " for="namaygdituju ">Personal yang Dituju</label>
+				<label class="col-md-3 " for="namaygdituju">Personal yang Dituju</label>
 				<div class="col-md-6 ">
-					<input type="text " name="namefor " class="form-control " required placeholder="Orang Dituju ">
+					<input type="text " name="namefor" class="form-control " required placeholder="Orang Dituju ">
 				</div>
 			</div>
 
 			<div class="form-group inline ">
 				<!-- Orang yang dituju -->
-				<label class="col-md-3 " for="jabatan ">Jabatan</label>
+				<label class="col-md-3 " for="jabatan">Jabatan</label>
 				<div class="col-md-6 ">
-					<input type="text " name="jabatan " class="form-control " required placeholder="Jabatan ">
+					<input type="text " name="jabatan" class="form-control " required placeholder="Jabatan ">
 				</div>
 			</div>
 

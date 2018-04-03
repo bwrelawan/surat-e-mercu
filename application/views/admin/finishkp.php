@@ -56,22 +56,22 @@
 										<?php echo $no++; ?>
 									</td>
 									<td>
-										<?php echo date('d-M-Y',strtotime($u->tanggal_selesai));?>
+										<?php cetak(date('d-M-Y',strtotime($u->tanggal_selesai)));?>
 									</td>
 									<td>
-										<?php echo $u->no_surat ?>
+										<?php cetak($u->no_surat);?>
 									</td>
 									<td>
-										<?php echo $u->nim; ?>
+										<?php cetak($u->nim);?>
 									</td>
 									<td>
-										<?php echo $u->nama_mahasiswa; ?>
+										<?php cetak($u->nama_mahasiswa); ?>
 									</td>
 									<td>
-										<?php echo $u->email; ?>
+										<?php cetak($u->email); ?>
 									</td>
 									<td>
-										<?php echo $u->prodi; ?>
+										<?php cetak($u->prodi); ?>
 									</td>
 									<td>
 										<button class="btn btn-primary col-sm-9" data-href="<?=site_url(" surat/ubahAmbilKP/$u->id_surat")?>" data-toggle="modal" data-target="#confirm" >

@@ -56,10 +56,11 @@
                       <?php $no = 1; ?>
                       <?php foreach ($mahasiswaSI as $surat): ?>
                         <tr>
-                          <td><?=$no++?></td>
-                          <td><?=$surat['nim']?></td>
-                          <td><?=$surat['nama_mahasiswa']?></td>
-                          <td><?=$surat['email']?></td>
+                          <td><?php cetak($no++)?></td>
+                          <td><?php cetak($surat['nim'])?></td>
+                          <td><?php cetak($surat['nama_mahasiswa'])?></td>
+                          <td><?php cetak($surat['email'])?></td>
+                          <td><?php cetak($surat['prodi'])?></td>
                         </tr>
                       <?php endforeach ?>
                     </tbody>
@@ -82,10 +83,11 @@
                       <?php $no = 1; ?>
                       <?php foreach ($mahasiswaTI as $surat): ?>
                         <tr>
-                          <td><?=$no++?></td>
-                          <td><?=$surat['nim']?></td>
-                          <td><?=$surat['nama_mahasiswa']?></td>
-                          <td><?=$surat['email']?></td>
+                          <td><?php cetak($no++)?></td>
+                          <td><?php cetak($surat['nim'])?></td>
+                          <td><?php cetak($surat['nama_mahasiswa'])?></td>
+                          <td><?php cetak($surat['email'])?></td>
+                          <td><?php cetak($surat['prodi'])?></td>
                         </tr>
                       <?php endforeach ?>
                     </tbody>

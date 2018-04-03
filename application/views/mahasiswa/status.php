@@ -43,14 +43,14 @@
       }
       ?>
       <tr>
-        <td><?=$value->nama_mahasiswa?></td>
-        <td><?=$value->jenis_surat?></td>
-        <td><?=date('d-M-Y',strtotime($value->tanggal_diajukan))?></td>
+        <td><?php cetak($value->nama_mahasiswa)  ?></td>
+        <td><?php cetak($value->jenis_surat)  ?></td>
+        <td><?php cetak(date('d-M-Y',strtotime($value->tanggal_diajukan)))  ?></td>
         <td class=<?=$class?> style="text-align: center;">
           <?php if ($value->status == 'Ambil'): ?>
             Sudah Diambil
           <?php else: ?>  
-            <?=$value->status?>
+            <?php cetak($value->status) ?>
           <?php endif ?>
         </td>
       </tr>
@@ -107,14 +107,14 @@
       }
       ?>
       <tr>
-        <td><?=$value->nama_mahasiswa?></td>
-        <td><?=$value->jenis_surat?></td>
-        <td><?=date('d-M-Y',strtotime($value->tanggal_diajukan))?></td>
+        <td><?php cetak($value->nama_mahasiswa) ?></td>
+        <td><?php cetak($value->jenis_surat) ?></td>
+        <td><?php cetak(date('d-M-Y',strtotime($value->tanggal_diajukan))) ?></td>
         <td class=<?=$class?> style="text-align: center;">
           <?php if ($value->status == 'Ambil'): ?>
             Sudah Diambil
           <?php else: ?>  
-            <?=$value->status?>
+            <?php cetak($value->status) ?>
           <?php endif ?>
         </td>
       </tr>

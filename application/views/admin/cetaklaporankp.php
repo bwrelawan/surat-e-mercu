@@ -25,11 +25,11 @@
 				?>
 				<tr>
 					<td><?=$i;?></td>
-					<td><?php echo $d['no_surat'];?></td>
-					<td><?php echo $d['nim'];?></td>
-					<td><?php echo $d['nama_perusahaan'];?></td>
-					<td><?php echo $d['alamat_perusahaan'];?></td>
-					<td><?php echo $d['tanggal_diambil'];?></td>
+					<td><?php cetak($d['no_surat']);?></td>
+					<td><?php cetak($d['nim']);?></td>
+					<td><?php cetak($d['nama_perusahaan']);?></td>
+					<td><?php cetak($d['alamat_perusahaan']);?></td>
+					<td><?php cetak($d['tanggal_diambil']);?></td>
 				</tr>
 				<?php } ?>
 			</tbody>

@@ -44,12 +44,12 @@
                         <?php $no=1; ?>
                         <?php foreach ($surat as $v): ?>
                           <tr>
-                            <td><?=$no++;?></td>
-                            <td><?=$v->no_surat;?></td>
-                            <td><?=$v->nim?></td>
-                            <td><?=$v->nama_mahasiswa?></td>
-                            <td><?=$v->email?></td>
-                            <td><?=$v->prodi?></td>
+                            <td><?php cetak($no++);?></td>
+                            <td><?php cetak($v->no_surat);?></td>
+                            <td><?php cetak($v->nim)?></td>
+                            <td><?php cetak($v->nama_mahasiswa)?></td>
+                            <td><?php cetak($v->email)?></td>
+                            <td><?php cetak($v->prodi)?></td>
                             <td>
                               <button class="btn btn-success col-sm-10" data-href="<?=site_url("surat/ubahFinishKP/$v->id_surat")?>" data-toggle="modal" data-target="#confirm" >
                                <span class="fa fa-check"></span> Finish
